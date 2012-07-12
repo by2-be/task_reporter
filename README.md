@@ -1,12 +1,10 @@
 # TaskReporter
 
-TODO: Write a gem description
-
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'task_reporter'
+    gem 'task_reporter', :git => "git@github.com:by2-be/task_reporter.git"
 
 And then execute:
 
@@ -18,7 +16,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You need to add twitter configuration.
+
+    Twitter.configure do |config|
+      config.consumer_key = YOUR_CONSUMER_KEY
+      config.consumer_secret = YOUR_CONSUMER_SECRET
+      config.oauth_token = YOUR_OAUTH_TOKEN
+      config.oauth_token_secret = YOUR_OAUTH_TOKEN_SECRET
+    end
 
 ## Contributing
 
