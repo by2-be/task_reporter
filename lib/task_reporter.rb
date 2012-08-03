@@ -1,7 +1,33 @@
 require "task_reporter/version"
+require "twitter"
+require "singleton"
 
 module TaskReporter
-  def self.report(project, customer, task, status, message="")
-    Twitter.update("[#{task}::#{status}] [##{project} ##{customer}] #{message} (@#{Time.now})")
+  class Reporter
+    include Singleton
+    attr_reader :test_reports
+
+    def initialize(framework=Rails)
+      @env = framework.env
+      @test_reports = []
+    end
+
+    def report(project, customer, task, status, message="")
+      message = "[#{task}::#{status}] [##{project} ##{customer}] #{message} (@#{Time.now})"
+
+      if @env.test?
+        @test_reports << message
+      else
+        Twitter.update(message)
+      end
+    end
+
+    def self.method_missing(method, *args)
+      self.instance.send(method, *args)
+    end
+  end
+
+  def self.method_missing(method, *args)
+    Reporter.instance.send(method, *args)
   end
 end

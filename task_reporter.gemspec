@@ -17,4 +17,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency("twitter")
   gem.add_development_dependency("rspec")
+  gem.add_development_dependency("guard")
+  gem.add_development_dependency("guard-rspec")
 end
