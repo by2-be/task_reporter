@@ -6,6 +6,7 @@ module TaskReporter
   class Reporter
     include Singleton
     attr_reader :test_reports
+    attr_accessor :project, :customer
 
     def initialize(framework=Rails)
       @env = framework.env
@@ -25,6 +26,10 @@ module TaskReporter
     def self.method_missing(method, *args)
       self.instance.send(method, *args)
     end
+  end
+
+  def self.configure
+    yield Reporter.instance
   end
 
   def self.method_missing(method, *args)

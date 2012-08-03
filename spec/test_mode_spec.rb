@@ -36,4 +36,16 @@ describe TaskReporter, "production environment" do
   end
 end
 
+describe TaskReporter, "configurate" do
+  %w(customer project).each do |setting|
 
+    it "should be possible to set #{setting}" do
+      lambda do
+        TaskReporter.configure do |c|
+          c.send(setting+"=", "test")
+        end
+      end.should change(TaskReporter, setting)
+    end
+
+  end
+end
