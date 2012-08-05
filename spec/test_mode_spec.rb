@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe TaskReporter, "test environment" do
   def do_action
-    TaskReporter.report(nil, nil, nil, nil)
+    TaskReporter.report(nil)
   end
 
   it "should not send to twitter" do
@@ -26,26 +26,12 @@ describe TaskReporter, "production environment" do
   end
 
   def do_action
-    TaskReporter.report(nil, nil, nil, nil)
+    TaskReporter.report(nil)
   end
 
   it "should sent to twitter" do
     Twitter.should_receive(:update)
 
     do_action
-  end
-end
-
-describe TaskReporter, "configurate" do
-  %w(customer project).each do |setting|
-
-    it "should be possible to set #{setting}" do
-      lambda do
-        TaskReporter.configure do |c|
-          c.send(setting+"=", "test")
-        end
-      end.should change(TaskReporter, setting)
-    end
-
   end
 end
