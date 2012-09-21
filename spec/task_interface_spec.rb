@@ -22,4 +22,26 @@ describe TaskReporter, "task interface" do
     report.should include("backup")
     report.should include("error")
   end
+
+  describe "when a task throws an error" do
+    def do_action
+      TaskReporter.task("backup") do
+        raise StandardError
+      end
+    end
+
+    it "should not break" do
+      lambda do
+        do_action
+      end.should_not raise_error
+    end
+
+    it "should report the task as an error" do
+      do_action
+      TaskReporter.test_reports.length.should == 1
+      report = TaskReporter.test_reports.first
+      report.should include("backup")
+      report.should include("error")
+    end
+  end
 end

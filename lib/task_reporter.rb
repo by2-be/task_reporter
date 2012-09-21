@@ -14,7 +14,12 @@ module TaskReporter
     end
 
     def task(name)
-      yield Task.new(name)
+      task = Task.new(name)
+      begin
+        yield task
+      rescue Exception => error
+        task.error error
+      end
     end
 
     def self.method_missing(method, *args)
@@ -33,6 +38,8 @@ module TaskReporter
   end
 
   class Task
+    attr_reader :name
+
     def initialize(name)
       @name = name
       @message = nil
