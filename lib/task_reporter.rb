@@ -27,7 +27,7 @@ module TaskReporter
     end
 
     def report(task)
-      message = task.to_s
+      message = task.to_s[0..139]
 
       if @env.test?
         @test_reports << message

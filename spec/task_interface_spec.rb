@@ -45,3 +45,13 @@ describe TaskReporter, "task interface" do
     end
   end
 end
+
+describe TaskReporter::Reporter do
+  describe "report" do
+    it "should cut off too long messages" do
+      TaskReporter.report("a"*150)
+
+      TaskReporter.test_reports.first.should == "a"*140
+    end
+  end
+end
