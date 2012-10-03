@@ -48,7 +48,7 @@ module TaskReporter
     def to_s
       task = @name
       status = @status
-      project = Reporter.name
+      project = Reporter.project
       customer = Reporter.customer
       message = @message
       "[#{task}::#{status}] [##{project} ##{customer}] #{message} (@#{Time.now})"
