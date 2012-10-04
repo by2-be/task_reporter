@@ -15,7 +15,7 @@ describe TaskReporter, "integration test" do
   end
 
   it "should create a new and correct report" do
-    -> { do_action }.should change(TaskReporter.test_reports, :length).by(1)
+    lambda { do_action }.should change(TaskReporter.test_reports, :length).by(1)
 
     report = TaskReporter.test_reports.first
     report.should include "[task_name::success] [#Project #Customer]"
