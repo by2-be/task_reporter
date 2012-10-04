@@ -1,4 +1,4 @@
-# TaskReporter
+# TaskReporter  [![Build Status](https://secure.travis-ci.org/caifara/task_reporter.png)](http://travis-ci.org/caifara/task_reporter)
 
 ## Installation
 
