@@ -38,6 +38,7 @@ Or install it yourself as:
 
 ## Usage
 
+
     ```ruby
     TaskReporter.task("name") do |task|
       # call task.success or task.error
