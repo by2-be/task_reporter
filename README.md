@@ -16,26 +16,40 @@ Or install it yourself as:
 
 ## Configuration
 
-You need to add twitter configuration.
+1. You will need to add twitter configuration in `config/initializers/twitter.rb`.
 
+    ```ruby
     Twitter.configure do |config|
-      config.consumer_key = YOUR_CONSUMER_KEY
-      config.consumer_secret = YOUR_CONSUMER_SECRET
-      config.oauth_token = YOUR_OAUTH_TOKEN
+      config.consumer_key       = YOUR_CONSUMER_KEY
+      config.consumer_secret    = YOUR_CONSUMER_SECRET
+      config.oauth_token        = YOUR_OAUTH_TOKEN
       config.oauth_token_secret = YOUR_OAUTH_TOKEN_SECRET
     end
+    ```
+
+2. You need to add a some info about your app in `config/initializers/task_reporter.rb`
+
+    ```ruby
+    TaskReporter.configure do |c|
+      c.customer = "customer name"
+      c.project  = "project name"
+    end
+    ```
 
 ## Usage
 
+    ```ruby
     TaskReporter.task("name") do |task|
       # call task.success or task.error
       # if nothing gets called, task.success is auto-called
       # if an error is raised, task.error is auto-called
       # a message(string) may be given to these methods
     end
+    ```
 
 Tasks may themselves handle error handling in more ways. For example some 
-models will send mails with backtraces. That's why you need to call task.error.
+models will send mails with backtraces. That's why you can call task.error 
+instead of waiting for a task to error out.
 
 ## Contributing
 
