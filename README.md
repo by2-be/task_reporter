@@ -38,6 +38,10 @@ Or install it yourself as:
 
 ## Usage
 
+Tasks may themselves handle error handling in more ways. For example some 
+models will send mails with backtraces. That's why you can call task.error 
+instead of waiting for a task to error out.
+
     ```ruby
     TaskReporter.task("name") do |task|
       # call task.success or task.error
@@ -46,10 +50,6 @@ Or install it yourself as:
       # a message(string) may be given to these methods
     end
     ```
-
-Tasks may themselves handle error handling in more ways. For example some 
-models will send mails with backtraces. That's why you can call task.error 
-instead of waiting for a task to error out.
 
 ## Contributing
 
