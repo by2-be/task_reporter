@@ -46,8 +46,11 @@ instead of waiting for a task to error out.
 TaskReporter.task("name") do |task|
   # call task.success or task.error
   # if nothing gets called, task.success is auto-called
+
   # if an error is raised, task.error is auto-called
   # a message(string) may be given to these methods
+
+  # if no error was raised, task.success is auto-called
 end
 ```
 
