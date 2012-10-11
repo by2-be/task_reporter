@@ -44,6 +44,21 @@ describe TaskReporter, "task interface" do
       report.should include("error")
     end
   end
+
+  describe "when a task does not throw an error but doesn't report" do
+    def do_action
+      TaskReporter.task("backup"){}
+    end
+
+    it "should report the task as successful" do
+      do_action
+
+      TaskReporter.test_reports.length.should == 1
+      report = TaskReporter.test_reports.first
+      report.should include("backup")
+      report.should_not include("error")
+    end
+  end
 end
 
 describe TaskReporter::Reporter do

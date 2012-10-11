@@ -19,6 +19,8 @@ module TaskReporter
         yield task
       rescue Exception => error
         task.error error
+      else
+        task.success unless task.reported?
       end
     end
 
@@ -43,6 +45,7 @@ module TaskReporter
     def initialize(name)
       @name = name
       @message = nil
+      @status = nil
     end
 
     def to_s
@@ -64,6 +67,10 @@ module TaskReporter
       @status = :error
       @message = message
       Reporter.instance.report(self)
+    end
+
+    def reported?
+      !@status.nil?
     end
   end
 
