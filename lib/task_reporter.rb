@@ -9,7 +9,8 @@ module TaskReporter
     attr_accessor :project, :customer
 
     def initialize(framework=Rails)
-      @env = framework.env
+      @framework = framework
+      @env = @framework.env
       @test_reports = []
     end
 
@@ -19,6 +20,9 @@ module TaskReporter
         yield task
       rescue Exception => error
         task.error error
+
+        logger.error error
+        logger.error error.backtrace
       else
         task.success unless task.reported?
       end
@@ -26,6 +30,10 @@ module TaskReporter
 
     def self.method_missing(method, *args)
       self.instance.send(method, *args)
+    end
+
+    def logger
+      @framework.respond_to?(:logger) ? @framework.logger : NullLogger.new
     end
 
     def report(task)
@@ -74,6 +82,13 @@ module TaskReporter
     end
   end
 
+  class NullLogger
+    def method_missing(method, *args)
+      puts "warning: called logger without a logger available"
+      puts "   Logger #{method}: #{args.join('\n')}"
+    end
+  end
+
   def self.configure
     yield Reporter.instance
   end
@@ -81,4 +96,7 @@ module TaskReporter
   def self.method_missing(method, *args, &block)
     Reporter.instance.send(method, *args, &block)
   end
+
+  class TaskReporterError < StandardError; end
+  class NoLoggerAvailable < TaskReporterError; end
 end

@@ -24,6 +24,11 @@ describe TaskReporter, "task interface" do
   end
 
   describe "when a task throws an error" do
+    let(:logger){ double(error: true) }
+    before do
+      Rails.stub(:logger => logger)
+    end
+
     def do_action
       TaskReporter.task("backup") do
         raise StandardError
@@ -42,6 +47,15 @@ describe TaskReporter, "task interface" do
       report = TaskReporter.test_reports.first
       report.should include("backup")
       report.should include("error")
+    end
+
+    it "should log the error" do
+      logger = mock
+      logger.should_receive(:error).exactly(2).times
+
+      Rails.stub(:logger => logger)
+
+      do_action
     end
   end
 

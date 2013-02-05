@@ -43,4 +43,3 @@ module Rails
     @env ||= Env.new
   end
 end
-
