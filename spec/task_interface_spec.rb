@@ -24,7 +24,7 @@ describe TaskReporter, "task interface" do
   end
 
   describe "when a task throws an error" do
-    let(:logger){ double(error: true) }
+    let(:logger){ double(:error =>  true) }
     before do
       Rails.stub(:logger => logger)
     end
