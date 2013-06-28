@@ -18,7 +18,7 @@ module TaskReporter
         task.error error
 
         logger.error error
-        logger.error error.backtrace
+        logger.error *error.backtrace
       else
         task.success unless task.reported?
       end
