@@ -1,10 +1,14 @@
 # TaskReporter  [![Build Status](https://secure.travis-ci.org/caifara/task_reporter.png)](http://travis-ci.org/caifara/task_reporter)
 
+## Ruby version
+
+Version 0.3.2 works with Ruby 1.8.7, from there on only Ruby >= 1.9.3 is supported.
+
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'task_reporter', :git => "git@github.com:by2-be/task_reporter.git"
+    gem 'task_reporter', "0.3.3", :git => "git://github.com/by2-be/task_reporter.git"
 
 And then execute:
 
