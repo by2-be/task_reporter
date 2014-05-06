@@ -4,7 +4,7 @@
 
 Add this line to your application's Gemfile:
 
-    gem 'task_reporter', :git => "git@github.com:by2-be/task_reporter.git"
+    gem 'task_reporter', "0.3.2", :git => "git://github.com/by2-be/task_reporter.git"
 
 And then execute:
 
