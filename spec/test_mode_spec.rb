@@ -22,7 +22,7 @@ end
 
 describe TaskReporter, "production environment" do
   before do
-    Rails.stub(:env){double(:test? => false)}
+    Rails.stub(:env){double(:test? => false, :development? => false)}
   end
 
   def do_action
