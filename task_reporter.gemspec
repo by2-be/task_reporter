@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = TaskReporter::VERSION
 
-  gem.add_dependency("twitter", "~> 6.2.0")
+  gem.add_dependency("twitter")
   gem.add_development_dependency("rspec")
   gem.add_development_dependency("rake")
 end
