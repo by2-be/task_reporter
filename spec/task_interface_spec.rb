@@ -50,8 +50,8 @@ describe TaskReporter, "task interface" do
     end
 
     it "should log the error" do
-      logger = mock
-      logger.should_receive(:error).exactly(2).times
+      logger = double
+      expect(logger).to receive(:error).exactly(2).times
 
       Rails.stub(:logger => logger)
 
