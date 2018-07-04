@@ -2,9 +2,9 @@
 
 ## Ruby version
 
-Version ~> 0.4.0 works with Ruby >= 2.4.3
-Version ~> 0.3.3 works with Ruby >= 1.9.3
-Version ~> 0.3.2 works with Ruby 1.8.7
+* Version ~> 0.4.0 works with Ruby >= 2.4.3
+* Version ~> 0.3.3 works with Ruby >= 1.9.3
+* Version ~> 0.3.2 works with Ruby 1.8.7
 
 ## Installation
 
@@ -66,4 +66,5 @@ end
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+5. Test changes (rake)
+6. Create new Pull Request
