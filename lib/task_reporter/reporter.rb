@@ -37,6 +37,8 @@ module TaskReporter
 
       if @env.test?
         @test_reports << message
+      elsif @env.development?
+        puts "[TaskReporter]: #{message}"
       else
         Twitter.update(message)
       end
