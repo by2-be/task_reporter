@@ -38,6 +38,7 @@ module TaskReporter
       if @env.test?
         @test_reports << message
       elsif @env.development?
+        Rails.logger.info "[TaskReporter]: #{message}"
         puts "[TaskReporter]: #{message}"
       else
         Twitter.update(message)
