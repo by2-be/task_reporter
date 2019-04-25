@@ -51,12 +51,12 @@ instead of waiting for a task to error out.
 ```ruby
 TaskReporter.task("name") do |task|
   # call task.success or task.error
-  # if nothing gets called, task.success is auto-called
+  # both accept an optional message
+  
+  # if none of those are called, task.success is auto-called
 
   # if an error is raised, task.error is auto-called
-  # a message(string) may be given to these methods
-
-  # if no error was raised, task.success is auto-called
+  # the error will not raise again (delayed jobs will get deleted)
 end
 ```
 
