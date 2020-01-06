@@ -2,6 +2,7 @@
 
 ## Ruby version
 
+* Version ~> 0.5.0 works with Ruby >= 2.7.0
 * Version ~> 0.4.0 works with Ruby >= 2.4.3
 * Version ~> 0.3.3 works with Ruby >= 1.9.3
 * Version ~> 0.3.2 works with Ruby 1.8.7
