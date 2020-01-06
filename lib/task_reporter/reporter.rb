@@ -41,7 +41,7 @@ module TaskReporter
         Rails.logger.info "[TaskReporter]: #{message}"
         puts "[TaskReporter]: #{message}"
       else
-        Twitter.update(message)
+        TaskReporter::Twitter.update(message)
       end
     end
   end

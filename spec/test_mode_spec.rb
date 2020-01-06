@@ -6,7 +6,7 @@ describe TaskReporter, "test environment" do
   end
 
   it "should not send to twitter" do
-    Twitter.should_not_receive(:update)
+    TaskReporter::Twitter.should_not_receive(:update)
 
     do_action
   end
@@ -30,7 +30,7 @@ describe TaskReporter, "production environment" do
   end
 
   it "should sent to twitter" do
-    Twitter.should_receive(:update)
+    TaskReporter::Twitter.should_receive(:update)
 
     do_action
   end

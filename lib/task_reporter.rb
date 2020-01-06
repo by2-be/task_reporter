@@ -1,5 +1,5 @@
 require "task_reporter/version"
-require "twitter"
+require "task_reporter/twitter"
 require "singleton"
 
 require "task_reporter/reporter"
