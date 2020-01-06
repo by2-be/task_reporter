@@ -14,7 +14,7 @@ module TaskReporter
     #   config.access_token_secret = "YOUR_ACCESS_SECRET"
     # end
     def self.configure
-      @client = Twitter::REST::Client.new do |config|
+      @client = ::Twitter::REST::Client.new do |config|
         yield config
       end
     end
